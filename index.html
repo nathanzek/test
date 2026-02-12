@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>hey daisy!</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+
+<body>
+  <div class="container">
+    <img src="./main-subject.png" class="main-image" />
+
+    <div class="image-button-group">
+      <img 
+        src="./yes-button-image.png" 
+        alt="Yes" 
+        class="img-btn" 
+        id="yesBtn"
+      />
+
+      <img 
+        src="./no-button-image.png" 
+        class="img-btn" 
+        id="noBtn"
+      />
+
+    </div>
+  </div>
+
+  <script>
+    const yesBtn = document.getElementById("yesBtn");
+
+    const images = [
+      "./yes-button-image.png",
+      "./really-button.png",
+      "./you-mean-it.png"
+    ];
+
+    let clickCount = 0;
+
+    yesBtn.addEventListener("click", function () {
+      clickCount++;
+
+      if (clickCount < images.length) {
+        yesBtn.src = images[clickCount];
+      } else {
+        window.location.href = "yes-page.html";
+      }
+    })
+    const noBtn = document.getElementById("noBtn");
+
+    noBtn.addEventListener("click", () => {
+
+      // Remove it from flex layout ONLY after clicking
+      noBtn.style.position = "absolute";
+
+      const maxX = window.innerWidth - noBtn.offsetWidth;
+      const maxY = window.innerHeight - noBtn.offsetHeight;
+
+      const randomX = Math.floor(Math.random() * maxX);
+      const randomY = Math.floor(Math.random() * maxY);
+
+      noBtn.style.left = randomX + "px";
+      noBtn.style.top = randomY + "px";
+    });
+    
+  </script>
+  
+
+</body>
+</html>
